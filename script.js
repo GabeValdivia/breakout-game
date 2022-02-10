@@ -127,7 +127,23 @@ function update() {
 
 update();
 
+// KeyDown event
+function keyDown(e) {
+	if(e.key === 'Right' || e.key === 'ArrowRight'){
+		paddle.dx = paddle.speed;
+	} else if (e.key === 'Left' || e.key === 'ArrowLeft'){
+		paddle.dx = -paddle.speed;
+	}
+}
+
+// KeyUp
+function keyUp(e) {
+	console.log(e.key);
+}
+
 // keyboard event handlers
+document.addEventListener('keydown', keyDown);
+document.addEventListener('keyup', keyUp);
 
 // Rules and close event handlers
 rulesBtn.addEventListener('click', () => rules.classList.add('show'));
