@@ -79,9 +79,6 @@ function drawScore() {
 
 draw();
 
-// Rules and close event handlers
-rulesBtn.addEventListener('click', () => rules.classList.add('show'));
-closeBtn.addEventListener('click', () => rules.classList.remove('show'));
 
 // Draw bricks on canvas
 function drawBricks() {
@@ -96,6 +93,11 @@ function drawBricks() {
 	});
 }
 
+// Move paddle on canvas
+function movePaddle() {
+	paddle.x += paddle.dx;
+}
+
 // Draw everything
 function draw() {
 	drawBall();
@@ -103,3 +105,19 @@ function draw() {
 	drawScore();
 	drawBricks();
 }
+
+// Update canvas drawing and animation
+function update() {
+	movePaddle();
+
+	// Draw everything
+	draw();
+
+	requestAnimationFrame(update);
+}
+
+update();
+
+// Rules and close event handlers
+rulesBtn.addEventListener('click', () => rules.classList.add('show'));
+closeBtn.addEventListener('click', () => rules.classList.remove('show'));
