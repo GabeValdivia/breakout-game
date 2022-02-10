@@ -141,7 +141,9 @@ function keyDown(e) {
 
 // KeyUp
 function keyUp(e) {
-	console.log(e.key);
+	if(e.key === 'Right' || e.key === 'ArrowRight' || e.key === 'Left' || e.key === 'ArrowLeft'){
+		paddle.dx = 0;
+	}
 }
 
 // keyboard event handlers
