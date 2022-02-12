@@ -17,6 +17,7 @@ const ball = {
 	speed: 4,
 	dx: 4,
 	dy: -4
+	visible: true
 };
 
 // Draw ball on canvas
@@ -146,8 +147,14 @@ function moveBall() {
 					increaseScore();
 				}
 			}
-		})
-	})
+		});
+	});
+
+	// Hit bottom wall - Lose
+	if(ball.y + ball.size > canvas.height){
+		showAllBricks();
+		score = 0;
+	}
 
 }
 
@@ -155,7 +162,7 @@ function moveBall() {
 function increaseScore() {
 	score++;
 
-	if(score %  (brickRowCount * brickRowCount) === 0){
+	if(score %  (brickRowCount * brickColumnCount) === 0){
 		showAllBricks();
 	}
 }
@@ -163,8 +170,8 @@ function increaseScore() {
 // Make all bricks appear 
 function showAllBricks() {
 	bricks.forEach(column => {
-		column.forEach(brick => brick.visible = true)
-	})
+		column.forEach(brick => (brick.visible = true));
+	});
 }
 
 // Draw everything
