@@ -111,6 +111,11 @@ function movePaddle() {
 function moveBall() {
 	ball.x += ball.dx;
 	ball.y += ball.dy;
+
+	// Wall collision (x)
+	if(ball.x + ball.size > canvas.width || ball.x - ball.size < 0){
+		ball.dx *= -1;
+	}
 }
 
 // Draw everything
