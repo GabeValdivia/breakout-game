@@ -107,6 +107,12 @@ function movePaddle() {
 	}
 }
 
+// Move ball on canvas
+function moveBall() {
+	ball.x += ball.dx;
+	ball.y += ball.dy;
+}
+
 // Draw everything
 function draw() {
 	// clear canvas
@@ -124,6 +130,7 @@ function update() {
 
 	// Draw everything
 	draw();
+	moveBall();
 
 	requestAnimationFrame(update);
 }
